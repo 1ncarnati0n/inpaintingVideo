@@ -1,23 +1,13 @@
 
-# Inpainterz
-Online Demo:[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1cQLFl2z5iOI9iZDcn4hSZ4zMU7bUu9NX), 
-Project PPT:[![Static Badge](https://img.shields.io/badge/report_ppt-pdf)](https://drive.google.com/file/d/1QtrXoP2Ny8CYVx314VeXlj5KS7QdsAx9/view?usp=drive_link)
+# Inpainting in Video
 
-
-**Inpainterz**는 2023년 이어드림스쿨3기에서 진행된 기업연계 프로젝트입니다. \
+**Inpainterz**팀은 2023년 이어드림스쿨3기에서 진행된 스타트업기업 연계 프로젝트입니다. \
 **연계기업**(커넥트브릭) 으로부터 **비디오 인페인팅기술**에 대한 **선행연구개발** 주제를 받아 진행하였습니다.
 
 🚀 Team Members
-> [강도성](https://github.com/kang952175) 
-> [경소현](https://github.com/SohyeonGyeong) 
-> [변웅진](https://github.com/1ncarnati0n)
-> [손수진](https://github.com/Soosembly)
-> [지경호](https://github.com/zkhshub)
->
-> Supported by [(주)**커넥트브릭**](https://connectbrick.com/) 
-> <p align="left"> <img src="assets/connectbrick.png" width="360"> </p>
+> [강도성](https://github.com/kang952175), [경소현](https://github.com/SohyeonGyeong), [변웅진](https://github.com/1ncarnati0n), [손수진](https://github.com/Soosembly), [지경호](https://github.com/zkhshub)
+> Supported by [(주)**커넥트브릭**](https://connectbrick.com/) <p align="left"> <img src="assets/connectbrick.png" width="240"> </p>
 > 
-
 
 _그 결과를 오픈소스 프로젝트로 정리했습니다._
 
@@ -37,7 +27,7 @@ _그 결과를 오픈소스 프로젝트로 정리했습니다._
    
 **2. *동영상 인페인팅***\
    **Inpainting**\
-   Input 값으로 Masking된 영상을 넣으면 복원해야하는 누락된 지점으로 인식한다. 이 과정에서 알고리즘은 주변의 픽셀 정보로 누락된 부분의 색상과 텍스처 등을 추정하고 채운다.
+   Input 값으로 Masking된 영상프레임들을 넣으면 복원해야하는 누락된 지점으로 인식한다. 이 과정에서 알고리즘은 주변의 픽셀 정보로 누락된 부분의 색상과 텍스처 등을 추정하고 채운다.
 
 **3. *결과 확인 및 수정***\
    Inpainting된 결과를 확인하고, 품질을 향상시키기 위해 추가적인 Task를 수행한다.
@@ -50,7 +40,7 @@ _그 결과를 오픈소스 프로젝트로 정리했습니다._
 ⭐️ **주요 알고리즘**으로는 제로샷러닝 및 비젼에서의 파운데이션 모델로 선보인 Meta의 [**SAM**(Segment Anything Models)](https://github.com/facebookresearch/segment-anything)과 효율적인 Multi-Object Track 그리고 Propagation를 위한 [**DeAOT**(Decoupling features in Associating Objects with Transformers)](https://github.com/yoxu515/aot-benchmark)(NeurIPS2022)그리고 [**E2FGVI** (End-to-End Framework for Flow-Guided Video Inpainting)](https://github.com/MCG-NKU/E2FGVI)으로 인페인팅을 하는 workflow이며 gradio를 이용해 GUI를 구성했습니다.
 
 <p align="center">
-<img src="assets/readme00.png" width="960">
+<img src="assets/readme00.png" width="1080">
 </p>
 
 ## Summary of Used Algorithms
@@ -65,7 +55,7 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 	Segment Anything Task의 핵심은 **프롬프팅이 가능**하다는 것.\
 	원하는 영역의 **Point**나 **Box** 또는 **자연어**, (+ **Mask**)로 구성된 프롬프트를 입력하면, 아무리 모호한 정보일지라도 유효한 Segmentation Mask를 출력한다.
 	<p align="center">
-	<img src="assets/readme01.png" width="480">
+	<img src="assets/readme01.png" width="420">
 	</p>
  
 2. **Model** ( Segment Anything Model, SAM )\
@@ -75,7 +65,7 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 	SAM의 Prompt Encoder와 Mask Decoder는 **가볍고 빠르다**.\
 	같은 이미지 임베딩이 여러 개의 프롬프트와 함께 재사용되기 때문에, CPU 환경의 웹 상에서 50ms 이하의 속도로 Mask를 예측할 수 있다.
 	<p align="center">	
-	<img src="assets/readme02.gif" width="480">
+	<img src="assets/readme02.gif" width="360">
 	</p>
 
 3. **Data** ( Segment Anythin Data Engine, SA-1B Dataset )\
@@ -83,7 +73,7 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 	Segment Anything은 자체적인 **Data Engine**을 개발했고, 그 결과 10억 개의 Mask를 가진 **SA-1B** 데이터셋이 탄생했다.
 
 	<p align="center">
-	<img src="assets/readme03.png" width="480">
+	<img src="assets/readme03.png" width="420">
 	</p>
 
 ### DeAOT
@@ -168,9 +158,7 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 - 이미지의 첫 단에 등장하는 객체가 아닌 중간이나 끝에 삽입되는 객체를 기억하는 알고리즘이다.
 - SOTA inpainting 알고리즘을 적용하여 더 자연스러운 객체 제거를 할 수 있다.
 
-
- 
- 
+---
 ## 🎮 Getting Started
 **1. Conda Default Environment** 🎾
 
@@ -231,7 +219,11 @@ bash script/download_ckpt.sh
 	⎣ \tool
 	⎣ \tutorial
 ```
-    
+## Demo & Tutorial 
+Online Demo:[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1cQLFl2z5iOI9iZDcn4hSZ4zMU7bUu9NX), 
+Project PPT:[![Static Badge](https://img.shields.io/badge/report_ppt-pdf)](https://drive.google.com/file/d/1QtrXoP2Ny8CYVx314VeXlj5KS7QdsAx9/view?usp=drive_link)
+
+
 ## License ❗️
 오픈소스를 지향합니다. 
 
