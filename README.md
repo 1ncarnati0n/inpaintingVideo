@@ -8,13 +8,16 @@
 > [강도성](https://github.com/kang952175), [경소현](https://github.com/SohyeonGyeong), [변웅진](https://github.com/1ncarnati0n), [손수진](https://github.com/Soosembly), [지경호](https://github.com/zkhshub)
 > Supported by [(주)**커넥트브릭**](https://connectbrick.com/) <p align="left"> <img src="assets/connectbrick.png" width="240"> </p>
 > 
-
 _그 결과를 오픈소스 프로젝트로 정리했습니다._
 
 <br>
-<br>
 
 ## Overview
+
+- 프로젝트
+
+
+
 
 🎥 비디오를 인페인팅 하는 과정은 다음과 같이 정리할 수 있습니다.
 
