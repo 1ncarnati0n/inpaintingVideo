@@ -1,22 +1,26 @@
 
 # Inpainting in Video
 
-**Inpainterz**팀은 2023년 이어드림스쿨3기에서 진행된 스타트업기업 연계 프로젝트입니다. \
-**연계기업**(커넥트브릭) 으로부터 **비디오 인페인팅기술**에 대한 **선행연구개발** 주제를 받아 진행하였습니다.
+<b>Inpainterz</b>팀은 2023년 이어드림스쿨3기에서 진행된 스타트업기업 연계 프로젝트입니다. <br>
+<b>연계기업</b>(커넥트브릭) 으로부터 <b>비디오 인페인팅기술</b>에 대한 <b>선행연구개발</b> 주제를 받아 진행하였습니다.
 
-🚀 Team Members
-> [강도성](https://github.com/kang952175), [경소현](https://github.com/SohyeonGyeong), [변웅진](https://github.com/1ncarnati0n), [손수진](https://github.com/Soosembly), [지경호](https://github.com/zkhshub)
-> Supported by [(주)**커넥트브릭**](https://connectbrick.com/) <p align="left"> <img src="assets/connectbrick.png" width="240"> </p>
-> 
-_그 결과를 오픈소스 프로젝트로 정리했습니다._
+🚀 Team Members [강도성](https://github.com/kang952175), [경소현](https://github.com/SohyeonGyeong), [변웅진](https://github.com/1ncarnati0n), [손수진](https://github.com/Soosembly), [지경호](https://github.com/zkhshub)
+
+🎷 Supported by [(주)**커넥트브릭**](https://connectbrick.com/) 
+
+<img src="assets/connectbrick.png" width="240">
+<p align='center'><i> 그 결과를 오픈소스 프로젝트로 정리했습니다.</i></p>
+
+<br>
+
+## Project Background
+
 
 <br>
 
 ## Overview
 
 - 프로젝트
-
-
 
 
 🎥 비디오를 인페인팅 하는 과정은 다음과 같이 정리할 수 있습니다.
@@ -49,6 +53,7 @@ _그 결과를 오픈소스 프로젝트로 정리했습니다._
 ## Summary of Used Algorithms
 inpainterz에서 사용한 알고리즘에 대한 내용을 요약했습니다.
 ### SAM 
+
 (Segment Anything Model) **[Paper](https://ai.meta.com/research/publications/segment-anything/)**
 
 대규모 데이터셋이 구축되지 않았던 기존의 Segmentation 작업은 매번 학습에 소모되는 시간과 비용이 너무 크다는 문제가 있었습니다. NLP 분야의 LLM처럼, **Zero-shot**이 가능한 모델을 만들수 없을까 했고, 2023년 4월 Meta에서는 Image Segmentation계의 **Foundation** 모델을 만드는 것을 목표로 이 모델을 발표했습니다.
@@ -151,18 +156,33 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 	<img src="assets/readme06.png" width="480">
 	</p>
 
+</details>
+
+<br>
+
 ## Review
 
 ### 구성한 App의 한계점
+
 - 빠르게 움직이는 대상과 대상에 간섭이 지속적으로 이루어지는 경우 memory를 놓친다. (e.g. 댄스 영상)
+
 - 경계가 뚜렷하지 않은 객체(벽의 균열)등을 inpainting하고자 하는 경우 잘 동작되지 않다.
 
 ### 회고 및 개선가능한 방향들
+
 - 이미지의 첫 단에 등장하는 객체가 아닌 중간이나 끝에 삽입되는 객체를 기억하는 알고리즘이다.
+
 - SOTA inpainting 알고리즘을 적용하여 더 자연스러운 객체 제거를 할 수 있다.
 
----
+<br>
+
 ## 🎮 Getting Started
+
+<details>
+<summary> <i> click and open install guide </i>  </summary> 
+
+<br>
+
 **1. Conda Default Environment** 🎾
 
 ```shell
@@ -174,16 +194,16 @@ pip install gdown
 ```
 
 **2. Requirements** 🗝️
-- The Segment-Anything repository has been cloned and renamed as sam, and the aot benchmark repository has been cloned and renamed as aot.
+- The Segment-Anything repository has been cloned and renamed as sam, <br> and the aot benchmark repository has been cloned and renamed as aot.
 
 - Please check the dependency requirements in SAM and DeAOT and E2FGVI.
 
-- The *implementation is tested under **python 3.9***, as well as ***pytorch 1.11.0*** + ***cu113*** and torchvision 0.12.0 + cu113 We recommend equivalent or higher pytorch version.
+- The *implementation is tested under **python 3.9***, as well as ***pytorch 1.11.0*** + ***cu113*** <br> and torchvision 0.12.0 + cu113 We recommend equivalent or higher pytorch version.
   
 -  Use the install.sh to install the necessary libs for **Inpainterz**
-```
-bash script/install.sh
-```
+	```
+	bash script/install.sh
+	```
 
 **3. Model Preparation** ⚙️
 - Download **SAM** model to **ckpt**, the default model is SAM-VIT-B (sam_vit_b_01ec64.pth).
@@ -198,10 +218,12 @@ bash script/install.sh
   the default model is E2FGVI-CVPR22 (E2FGVI-CVPR22.pth)
 
 - You can download the default weights using the command line as shown below.
-```
-bash script/download_ckpt.sh
-```
+
+	```
+	bash script/download_ckpt.sh
+	```
 ## Overall packages
+
 ```Markdown
 \inpainterz
 	⎣ \E2FGVI
@@ -222,20 +244,23 @@ bash script/download_ckpt.sh
 	⎣ \tool
 	⎣ \tutorial
 ```
+</details> 
+
 ## Demo & Tutorial 
 Online Demo:[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1cQLFl2z5iOI9iZDcn4hSZ4zMU7bUu9NX), 
 Project PPT:[![Static Badge](https://img.shields.io/badge/report_ppt-pdf)](https://drive.google.com/file/d/1QtrXoP2Ny8CYVx314VeXlj5KS7QdsAx9/view?usp=drive_link)
 
+<br>
 
-## License ❗️
-오픈소스를 지향합니다. 
+## License❗️
 
-SAM, DeAOT는 상업적 이용까지 가능한 오픈소스입니다.
+오픈소스를 지향합니다. SAM, DeAOT는 상업적 이용까지 가능한 오픈소스입니다.
 
 하지만 E2FGVI는 상업적으로는 이용할 수 없기에 추가 확인을 하시기 바랍니다.
 
-	
-## Acknowledgement 🧐
+<br>
+
+## Acknowledgement🧐
 This repository is maintained by **Inpainterz** [강도성](https://github.com/kang952175) and  [경소현](https://github.com/SohyeonGyeong) ,[변웅진](https://github.com/1ncarnati0n), [손수진](https://github.com/Soosembly),  [지경호](https://github.com/zkhshub)
 
 This code is based on [SAM](https://github.com/facebookresearch/segment-anything), [DeAOT](https://github.com/z-x-yang/AOT), [SAMTrack](https://github.com/z-x-yang/Segment-and-Track-Anything), and [E2FGVI](https://github.com/MCG-NKU/E2FGVI).
