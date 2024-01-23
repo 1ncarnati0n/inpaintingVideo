@@ -15,7 +15,7 @@
 
 <br>
 
-## Project Background
+## 01. Project Background
 
 ### 📽 영상 인페인팅 기술
 
@@ -41,15 +41,15 @@
 
 특정 브랜드의 제품이나 로고가 무단으로 노출될 경우, 해당 브랜드의 지적 재산권을 침해할 수가 있고 무단 사용된 상표는 이미지의 손상을 줄 수도 있어 위 이미지와 같이 상표가리기 및 편집을 합니다.
 
-방송에서 상업광고를 제한하기 위한 규정이 있으므로 프로그램 내 제품과 브랜드 노출을 피하고 광고와 프로그램을 분리하여 방영해야 하는 경우가 있어 상표를 가리거나 편집을 합니다. 또한, 나라별로 이러한 규정이 다르기 때문에 편집작업이 추가된다.
+방송에서 상업광고를 제한하기 위한 규정이 있으므로 프로그램 내 제품과 브랜드 노출을 피하고 광고와 프로그램을 분리하여 방영해야 하는 경우가 있어 상표를 가리거나 편집을 합니다. 또한, 나라별로 이러한 규정이 다르기 때문에 편집작업이 추가됩니다.
 
 <br>
 
-## 방법론 및 기술탐색
+## 02. 방법론 및 기술탐색
 
 ### 🪜 영상 인페인팅 단계별 과정
 
-🎥 영상 인페인팅을 수행하기 위해 세 단계로 과정을 분리.
+🎥 영상 인페인팅을 수행하기 위해 세 단계로 과정을 분리했습니다.
 
 1. **영상 객체 마스킹**: Segmentation & Masking <br>
 영상내 한 프레임에서 인페인팅할 객체를 선택, 정확하게 분리하기 위해 Segmentation 기법을 사용. 분할된 객체를 Masking하여, 인페인팅 알고리즘이 수행할 수 있게 한다.
@@ -66,7 +66,7 @@ Input 값으로 마스킹된 모든 영상프레임을 넣으면 마스킹된 �
 
 위 3가지 단계에 맞는 모델들을 탐색했고 **inpainterz 파이프라인**을 기획했습니다. <br>
 
-⭐️ **주요 알고리즘**으로는 제로샷러닝 및 비젼에서의 파운데이션 모델로 선보인 Meta의 [**SAM**(Segment Anything Models)](https://github.com/facebookresearch/segment-anything)과 효율적인 Multi-Object Track 그리고 Propagation를 위한 [**DeAOT**(Decoupling features in Associating Objects with Transformers)](https://github.com/yoxu515/aot-benchmark) 그리고 [**E2FGVI** (End-to-End Framework for Flow-Guided Video Inpainting)](https://github.com/MCG-NKU/E2FGVI)등을 선별하였습니다.
+⭐️ **주요 알고리즘**으로는 제로샷러닝 및 비젼에서의 파운데이션 모델로 선보인 Meta의 [**SAM**(Segment Anything Models)](https://github.com/facebookresearch/segment-anything)과 효율적인 Multi-Object Track 그리고 Propagation를 위한 [**DeAOT**(Decoupling features in Associating Objects with Transformers)](https://github.com/yoxu515/aot-benchmark) 그리고 [**E2FGVI** (End-to-End Framework for Flow-Guided Video Inpainting)](https://github.com/MCG-NKU/E2FGVI)등을 선별하여 적용했습니다.
 
 <p align="center"> <img src="assets/readme00.png" width="1080"> </p>
 
@@ -201,7 +201,15 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 
 <br>
 
-## Review
+## 04. GUI 구성
+
+<br>
+
+## 05. 결과
+
+<br>
+
+## 06. Review
 
 ### 구성한 App의 한계점
 
