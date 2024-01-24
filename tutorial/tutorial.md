@@ -1,4 +1,4 @@
-# Web UI Tutorial for Inpainting
+# Web UI Tutorial for Video Inpainting
 
 ## Prepare the video as input for the WebUI.
 **The structure of _"test-video.mp4"_ must be like this : </br>

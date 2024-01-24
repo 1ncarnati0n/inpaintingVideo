@@ -102,9 +102,7 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 1. **Task** ( Promptable Segmentation Task )\
 	Segment Anything Task의 핵심은 **프롬프팅이 가능**하다는 것.\
 	원하는 영역의 **Point**나 **Box** 또는 **자연어**, (+ **Mask**)로 구성된 프롬프트를 입력하면, 아무리 모호한 정보일지라도 유효한 Segmentation Mask를 출력한다.
-	<p align="center">
-	<img src="assets/readme01.png" width="360">
-	</p>
+	<p align="center"><img src="assets/readme01.png" width="360"></p>
  
 2. **Model** ( Segment Anything Model, SAM )\
 	이를 위한 모델인 SAM은 **두 개의 인코더**와 **하나의 디코더**로 구성.
@@ -112,17 +110,14 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 	Mask Decoder는 Transformer의 Decoder를 조금 수정한 것으로, 이미지 임베딩과 프롬프트 임베딩을 모두 업데이트 하기 위해 **Self-Attention**과 **Cross-Attention**을 양방향으로 활용.\
 	SAM의 Prompt Encoder와 Mask Decoder는 **가볍고 빠름**.\
 	같은 이미지 임베딩이 여러 개의 프롬프트와 함께 재사용되기 때문에, CPU 환경의 웹 상에서 50ms 이하의 속도로 Mask를 예측할 수 있음.
-	<p align="center">	
-	<img src="assets/readme02.gif" width="360">
-	</p>
+	<p align="center"><img src="assets/readme02.gif" width="360"></p>
 
 3. **Data** ( Segment Anythin Data Engine, SA-1B Dataset )\
 	Foundation 모델 개발에 있어 가장 중요한 것은 대규모 데이터셋.\
 	Segment Anything은 자체적인 **Data Engine**을 개발했고, 그 결과 10억 개의 Mask를 가진 **SA-1B** 데이터셋이 탄생했다.
 
-	<p align="center">
-	<img src="assets/readme03.gif" width="360">
-	</p>
+	<p align="center"><img src="assets/readme03.gif" width="520"></p>
+
 </details>
 
 ### DeAOT
@@ -140,16 +135,12 @@ Meta는 다음 세 가지를 새롭게 선보였습니다. **Task**, **Model**, 
 
 결과적으로, DeAOT는 기존 AOT 및 다른 방식의 모델인 XMem보다 뛰어난 정확도 및 효율성을 보여줍니다.
 
-<p align="center">	
-<img src="assets/readme05.png" width="360">
-</p>
+<p align="center"><img src="assets/readme05.png" width="360"></p>
 
 다시 정리하면 DeAOT는 두 개의 독립된 branch를 통해서 객체의 visual features와 mask features의 정보를 계층적 전파를 하는 방식입니다.\
 Visual branch는 패치별 시각적 임베딩에 대한 attention map을 계산하여 객체를 일치시키는 역할을 하며 ID Branch는 객체별 정보를 과거 프레임에서 현재 프레임으로 전파하기 위한 역할을 합니다. 
 
-<p align="center">	
-<img src="assets/readme05.gif" width="420">
-</p>
+<p align="center"><img src="assets/readme05.gif" width="420"></p>
 
 </details>
 
@@ -200,14 +191,40 @@ Visual branch는 패치별 시각적 임베딩에 대한 attention map을 계산
 
 ## 04. GUI 구성
 
+GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT, E2FGVI 세가지 모델을 통합해서 **한 화면구성 안에서** 3가지 단계가 **모두 동작** 할 수 있도록 설계했습니다.
+
+<center> <b>전체 GUI</b> </center>
+
+<p align="center"><img src="assets/gui1.png" width="540"></p>
+
+<center> <b>하이퍼파라미터</b> 조절 블록 </center>
+
+<p align="center"><img src="assets/gui2.png" width="360"></p>
+
+**aot_model**: 추적 및 전파에 사용할 DeAOT/AOT 선택.
+
+**sam_gap**: 지정된 프레임 간격으로 새로 나타나는 객체를 추가위해 segmentation 빈도를 제어. 이 값을 높이면 새로운 타겟을 발견하는 빈도는 감소하지만 추론 속도가 크게 향상.
+
+**points_per_side**: 이미지 위에 그리드를 샘플링하여 마스크를 생성하는 데 사용되는 면당 포인트 수를 제어하는 데 사용됩니다. 크기를 늘리면 작은 물체를 감지하는 기능이 향상, 큰 타겟은 더 세밀하게 분할가능.
+
+**max_obj_num**: DeAOT가 감지하고 추적할 수 있는 최대 오브젝트 수를 제한. 
+객체수가 많을수록 메모리 사용량이 증가, 약 16GB의 메모리는 최대 255개의 객체를 처리.
 
 <br>
 
-## 05. 결과
+### Step 1. SAM
+
+### Step 2. DeAOT
+
+### Step 3. E2FGVI
 
 <br>
 
-## 06. Review
+## 05. RESULT
+
+<br>
+
+## 06. REVIEW
 
 ### 구성한 App의 한계점
 
