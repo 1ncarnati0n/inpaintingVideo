@@ -71,15 +71,15 @@ Input 값으로 마스킹된 모든 영상프레임을 넣으면 마스킹된 �
 
 <br>
 
-### 🧑🏻‍💻 기술탐색
+### 🧑🏻‍💻 기술탐색 및 구현방향
 
 위 3가지 단계에 맞는 모델들을 탐색했고 **inpainterz 파이프라인**을 기획했습니다. <br>
 
-⭐️ **주요 알고리즘**으로는 제로샷러닝 및 비젼에서의 파운데이션 모델로 선보인 Meta의 [**SAM**(Segment Anything Models)](https://github.com/facebookresearch/segment-anything)과 효율적인 Multi-Object Track 그리고 Propagation를 위한 [**DeAOT**(Decoupling features in Associating Objects with Transformers)](https://github.com/yoxu515/aot-benchmark) 그리고 [**E2FGVI** (End-to-End Framework for Flow-Guided Video Inpainting)](https://github.com/MCG-NKU/E2FGVI)등을 선별하여 적용했습니다.
+**주요 알고리즘**으로는 제로샷러닝 및 비젼에서의 파운데이션 모델로 선보인 Meta의 [**SAM**(Segment Anything Models)](https://github.com/facebookresearch/segment-anything)과 효율적인 Multi-Object Track 그리고 Propagation를 위한 [**DeAOT**(Decoupling features in Associating Objects with Transformers)](https://github.com/yoxu515/aot-benchmark) 그리고 [**E2FGVI** (End-to-End Framework for Flow-Guided Video Inpainting)](https://github.com/MCG-NKU/E2FGVI)등을 선별하여 적용했습니다.
 
 <p align="center"> <img src="assets/readme00.png" width="1080"> </p>
 
-🔧 이를 통합한 **inpainterz 파이프라인**에서 
+이를 통합한 **inpainterz 파이프라인**에서 
 
 **SAM**은 새로운 오브젝트를 동적으로 자동감지하고 세분화할 수 있도록 지원하며, **DeAOT**는 식별된 모든 오브젝트를 추적하는 역할을 담당합니다. 결과적으로 **E2FGVI**는 영상내 모든 마스킹된 대상을 인페인팅합니다. 
 
@@ -201,15 +201,6 @@ GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT
 
 <p align="center"><img src="assets/gui2.png" width="360"></p>
 
-- **aot_model**: 추적 및 전파에 사용할 DeAOT/AOT 선택.
-
-- **sam_gap**: 지정된 프레임 간격으로 새로 나타나는 객체를 추가위해 segmentation 빈도를 제어. 이 값을 높이면 새로운 타겟을 발견하는 빈도는 감소하지만 추론 속도가 크게 향상.
-
-- **points_per_side**: 이미지 위에 그리드를 샘플링하여 마스크를 생성하는 데 사용되는 면당 포인트 수를 제어하는 데 사용됩니다. 크기를 늘리면 작은 물체를 감지하는 기능이 향상, 큰 타겟은 더 세밀하게 분할가능.
-
-- **max_obj_num**: DeAOT가 감지하고 추적할 수 있는 최대 오브젝트 수를 제한. 
-객체수가 많을수록 메모리 사용량이 증가, 약 16GB의 메모리는 최대 255개의 객체를 처리.
-
 <br>
 
 ### Step 1. SAM 
@@ -237,6 +228,8 @@ GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT
 <img src="assets/r_baloon.gif" height="100">
 </p>
 
+
+
 <p align="center">
 <img src="assets/r_MarineDebris_seg.gif" height="200">
 <img src="assets/r_MarineDebris_inpainted.gif" height="200">
@@ -253,17 +246,15 @@ GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT
 
 ## 06. REVIEW
 
-### 구성한 App의 한계점
+### 한계점 및 개선가능성 
 
-- 빠르게 움직이는 대상과 대상에 간섭이 지속적으로 이루어지는 경우 memory를 놓친다. (e.g. 댄스 영상)
+- 인페인팅 대상을 마스킹시 영상의 첫프레임에 그 대상이 반드시 있어야 한다. <br> 
 
+- 대상이 빠르게 움직이거나 간섭이 지속적으로 이루어지는 경우 트랙킹과정에서 놓치는 경우가 있다. (e.g. 댄스영상)
 - 경계가 뚜렷하지 않은 객체(벽의 균열)등을 inpainting하고자 하는 경우 잘 동작되지 않다.
-
-### 회고 및 개선 가능한 방향들
-
-- 이미지의 첫 단에 등장하는 객체가 아닌 중간이나 끝에 삽입되는 객체를 기억하는 알고리즘이다.
-
-- SOTA inpainting 알고리즘을 적용하여 더 자연스러운 객체 제거를 할 수 있다.
+- 인페인팅 과정에서 약 7초 까지의 영상이 효율적으로 인페인팅이 되며, 영상길이가 길어지면 메모리관리 문제가 생긴다.
+- 주어진 리소스의 한계로 고화질영상 인페인팅 결과는 얻어내지 못했다. 
+- 인페인팅된 부분에 잔상이 남는 경우가 있으며 이는 마스킹작업에 후처리 알고리즘을 적용해봄직하다. 
 
 <br>
 
@@ -271,7 +262,7 @@ GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT
 
 - Colab Demo: 👉 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1cQLFl2z5iOI9iZDcn4hSZ4zMU7bUu9NX)
 
-- Tutorial: 👉 [Link]()
+- Tutorial: 👉 [Link](tutorial/tutorial.md)
 
 - Project PPT: 👉 [![Static Badge](https://img.shields.io/badge/report_ppt-pdf)](https://drive.google.com/file/d/1QtrXoP2Ny8CYVx314VeXlj5KS7QdsAx9/view?usp=drive_link)
 

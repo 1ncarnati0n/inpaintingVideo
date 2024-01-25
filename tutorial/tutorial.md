@@ -31,6 +31,15 @@ In our example, we want to erase the logo, so we mark the logo on the clothing a
 We'll discuss specific parameter settings and buttons within the **Click tab** in more detail below.
 <p align="center"><img src="./img/CLICK TAB.png" width = "400" height = "400" alt="sam click tab"/> </p>
 
+- **aot_model**: Select the DeAOT/AOT to use for tracking and propagation.
+
+- **sam_gap**: Controls the frequency of segmentation to add newly appearing objects at specified frame intervals. Increasing this value reduces the frequency of discovering new targets, but significantly increases inference speed.
+
+- **points_per_side**: Used to control the number of points per face used to generate a mask by sampling a grid over the image. Increasing the size improves the ability to detect small objects, while larger targets can be segmented more finely.
+
+- **max_obj_num**: Limits the maximum number of objects that DeAOT can detect and track. 
+Higher number of objects increases memory usage, approximately 16GB of memory can handle up to 255 objects.
+
 
 ## 3. Segment-and-Track-Anything using DeAOT
 If you are satisfied with the segmented area in the first frame, click the **[Start Tracking!]** button. 
