@@ -214,19 +214,41 @@ GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT
 
 ### Step 1. SAM 
 비디오를 로드하고 영상의 첫 프레임에서 인페인팅 하고자하는 로고를 포인트 프롬프트로 선택하여 마스킹을 한다. 아래 영상에서는 2개의 포인트 프롬프트로 전체 로고 선택이 가능했다.
+
 <p align="center"><img src="assets/gui3.gif" width="720"></p>
 
 ### Step 2. DeAOT
+
 첫 프레임에서 마스킹된 로고를 나머지 프레임에서 자동 추적하여 마스킹하기위해 Tracking을 실행한다.
 <p align="center"><img src="assets/gui4.gif" width="720"></p>
 
 ### Step 3. E2FGVI
+
 영상 내 모든 프레임에서 마스킹된 로고를 인페인팅하여 결과물을 다운로드한다. 
 <p align="center"><img src="assets/gui5.gif" width="720"></p>
 
 <br>
 
-## 05. RESULT
+## 05. RESULTs
+
+<p align="center">
+<img src="assets/r_baloon.gif" height="100">
+<img src="assets/r_baloon_seg.gif" height="200">
+<img src="assets/r_baloon_inpainted.gif" height="200">
+</p>
+
+<p align="center">
+<img src="assets/r_MarineDebris.gif" height="100">
+<img src="assets/r_MarineDebris_seg.gif" height="200">
+<img src="assets/r_MarineDebris_inpainted.gif" height="200">
+</p>
+
+<p align="center">
+<img src="assets/r_logo.gif" height="100">
+<img src="assets/r_logo_seg.gif" height="200">
+<img src="assets/r_logo_inpainted.gif" height="200">
+
+</p>
 
 <br>
 
