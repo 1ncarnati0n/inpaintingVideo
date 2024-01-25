@@ -232,22 +232,21 @@ GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT
 ## 05. RESULTs
 
 <p align="center">
-<img src="assets/r_baloon.gif" height="100">
 <img src="assets/r_baloon_seg.gif" height="200">
 <img src="assets/r_baloon_inpainted.gif" height="200">
+<img src="assets/r_baloon.gif" height="100">
 </p>
 
 <p align="center">
-<img src="assets/r_MarineDebris.gif" height="100">
 <img src="assets/r_MarineDebris_seg.gif" height="200">
 <img src="assets/r_MarineDebris_inpainted.gif" height="200">
+<img src="assets/r_MarineDebris.gif" height="100">
 </p>
 
 <p align="center">
-<img src="assets/r_logo.gif" height="100">
 <img src="assets/r_logo_seg.gif" height="200">
 <img src="assets/r_logo_inpainted.gif" height="200">
-
+<img src="assets/r_logo.gif" height="100">
 </p>
 
 <br>
