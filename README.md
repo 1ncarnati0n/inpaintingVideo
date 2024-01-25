@@ -193,30 +193,36 @@ Visual branch는 패치별 시각적 임베딩에 대한 attention map을 계산
 
 GUI는 **gradio** 라이브러리를 이용하여 구현했습니다. SAM, DeAOT, E2FGVI 세가지 모델을 통합해서 **한 화면구성 안에서** 3가지 단계가 **모두 동작** 할 수 있도록 설계했습니다.
 
-<center> <b>전체 GUI</b> </center>
+<p align="center"> <b>전체 GUI</b> </p>
 
 <p align="center"><img src="assets/gui1.png" width="540"></p>
 
-<center> <b>하이퍼파라미터</b> 조절 블록 </center>
+<p align="center"> <b>하이퍼파라미터</b> 조절 블록 </p>
 
 <p align="center"><img src="assets/gui2.png" width="360"></p>
 
-**aot_model**: 추적 및 전파에 사용할 DeAOT/AOT 선택.
+- **aot_model**: 추적 및 전파에 사용할 DeAOT/AOT 선택.
 
-**sam_gap**: 지정된 프레임 간격으로 새로 나타나는 객체를 추가위해 segmentation 빈도를 제어. 이 값을 높이면 새로운 타겟을 발견하는 빈도는 감소하지만 추론 속도가 크게 향상.
+- **sam_gap**: 지정된 프레임 간격으로 새로 나타나는 객체를 추가위해 segmentation 빈도를 제어. 이 값을 높이면 새로운 타겟을 발견하는 빈도는 감소하지만 추론 속도가 크게 향상.
 
-**points_per_side**: 이미지 위에 그리드를 샘플링하여 마스크를 생성하는 데 사용되는 면당 포인트 수를 제어하는 데 사용됩니다. 크기를 늘리면 작은 물체를 감지하는 기능이 향상, 큰 타겟은 더 세밀하게 분할가능.
+- **points_per_side**: 이미지 위에 그리드를 샘플링하여 마스크를 생성하는 데 사용되는 면당 포인트 수를 제어하는 데 사용됩니다. 크기를 늘리면 작은 물체를 감지하는 기능이 향상, 큰 타겟은 더 세밀하게 분할가능.
 
-**max_obj_num**: DeAOT가 감지하고 추적할 수 있는 최대 오브젝트 수를 제한. 
+- **max_obj_num**: DeAOT가 감지하고 추적할 수 있는 최대 오브젝트 수를 제한. 
 객체수가 많을수록 메모리 사용량이 증가, 약 16GB의 메모리는 최대 255개의 객체를 처리.
 
 <br>
 
-### Step 1. SAM
+### Step 1. SAM 
+비디오를 로드하고 영상의 첫 프레임에서 인페인팅 하고자하는 로고를 포인트 프롬프트로 선택하여 마스킹을 한다. 아래 영상에서는 2개의 포인트 프롬프트로 전체 로고 선택이 가능했다.
+<p align="center"><img src="assets/gui3.gif" width="720"></p>
 
 ### Step 2. DeAOT
+첫 프레임에서 마스킹된 로고를 나머지 프레임에서 자동 추적하여 마스킹하기위해 Tracking을 실행한다.
+<p align="center"><img src="assets/gui4.gif" width="720"></p>
 
 ### Step 3. E2FGVI
+영상 내 모든 프레임에서 마스킹된 로고를 인페인팅하여 결과물을 다운로드한다. 
+<p align="center"><img src="assets/gui5.gif" width="720"></p>
 
 <br>
 
